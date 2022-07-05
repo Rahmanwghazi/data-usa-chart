@@ -21,13 +21,13 @@ export default function Charts() {
         getData();
     }, [])
 
-    let dataa = data.data?.slice(0).reverse().map((item) => {
+    let datas = data.data?.slice(0).reverse().map((item) => {
         return [item.Year, item.Population];
     })
 
     let column = [['Year', 'Population']]
 
-    let dataChart = column.concat(dataa)
+    let dataChart = column.concat(datas)
 
     let descriptions = data.source?.map((item) => {
         return {
@@ -69,7 +69,7 @@ export default function Charts() {
             <div className={styles.desc}>
                 <p>
                     <b>Source:</b> {descriptionsObj[0]?.source_name} -
-                    <a href="https://www.census.gov/programs-surveys/acs/" target="_blank" rel="noreferrer">
+                    <a href={descriptionsObj[0]?.dataset_link} target="_blank" rel="noreferrer">
                         {descriptionsObj[0]?.dataset_name}</a>
                 </p>
                 <p>{descriptionsObj[0]?.source_description}</p>
